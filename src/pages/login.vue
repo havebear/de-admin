@@ -1,16 +1,16 @@
 <template>
   <div class="login">
     <div class="login-box">
-      {{token}}
-      <el-form ref="form" :model="form" label-width="80px">
+      <!-- {{token}} -->
+      <el-form ref="form" :model="account" label-width="80px">
         <el-form-item label="用户名">
-          <el-input v-model="form.username"></el-input>
+          <el-input v-model="account.username" placeholder="请输入用户名"></el-input>
         </el-form-item>
         <el-form-item label="密码">
-          <el-input v-model="form.password"></el-input>
+          <el-input type="password" v-model="account.password" placeholder="请输入密码"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="login(form)">登录</el-button>
+          <el-button type="primary" :loading="loading" @click="submit()">登录</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -26,32 +26,29 @@ export default {
   name: "Login",
   data() {
     return {
-      form: {
+      loading: false,
+      account: {
         username: "",
         password: ""
       }
     };
   },
   methods: {
-    submit() {
-      adminService
-        .login(this.form)
-        .then(res => {
-          const data = res.data;
-          this.$store.commit("setToken", data.data.token);
-          this.$store.commit("setUser", data.data.user);
-          locStore("token", data.data.token);
-          locStore("user", JSON.stringify(data.data.user));
-        })
-        .catch(err => {
-          console.log(err);
-        });
+    async submit() {
+      this.loading = true;
+      await this.login(this.account);
+      this.loading = false;
+      if (this.isLogin) {
+        console.log("登录成功");
+        this.$router.push("/");
+      }
     },
     ...mapActions(["login"])
   },
   computed: {
     ...mapGetters({
-      token: "token"
+      token: "token",
+      isLogin: "isLogin"
     })
   }
 };

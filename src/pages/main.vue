@@ -24,7 +24,7 @@
                 </el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
-            <span class="logout-btn">退出</span>
+            <span class="logout-btn" @click="logout">退出</span>
           </div>
         </div>
       </el-header>
@@ -39,19 +39,23 @@
               <i class="el-icon-search"></i>
               <span slot="title">讲师</span>
             </el-menu-item>
-            <el-menu-item index="3">
+            <el-menu-item index="/manager/catlog">
+              <i class="el-icon-edit"></i>
+              <span slot="title">分类</span>
+            </el-menu-item>
+            <el-menu-item index="/manager/course">
               <i class="el-icon-date"></i>
               <span slot="title">课程</span>
             </el-menu-item>
-            <el-menu-item index="4">
+            <el-menu-item index="/manager/test">
               <i class="el-icon-tickets"></i>
               <span slot="title">测评</span>
             </el-menu-item>
-            <el-menu-item index="5">
+            <el-menu-item index="/manager/apply">
               <i class="el-icon-message"></i>
               <span slot="title">申请</span>
             </el-menu-item>
-            <el-menu-item index="6">
+            <el-menu-item index="/manager/feedback">
               <i class="el-icon-edit"></i>
               <span slot="title">反馈</span>
             </el-menu-item>
@@ -70,16 +74,14 @@
 </template>
 
 <script>
-
-
 export default {
   name: "Main",
-  mounted() {
-  },
+  mounted() {},
   methods: {
     toUrl(index) {
       this.$router.push(index);
     },
+    logout() {}
   }
 };
 </script>

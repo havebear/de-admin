@@ -1,6 +1,6 @@
 export default {
-  loading: false,
-  login: false,
+  isLoading: false,
+  isLogin: false,
   token: '',
   user: {
     username: '',

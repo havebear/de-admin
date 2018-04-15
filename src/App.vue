@@ -19,6 +19,7 @@ export default {
       if (token && user) {
         this.$store.commit("setToken", token);
         this.$store.commit("setUser", JSON.parse(user));
+        this.$store.commit("setLogin", true);
       } else {
         this.$router.push("/login");
       }

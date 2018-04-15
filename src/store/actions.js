@@ -1,16 +1,27 @@
 import adminService from '@/api/admin-service'
-import locStore from 'storejs' 
+import locStore from 'storejs'
 
 export default {
-  login({ dispatch, commit, state }, parmas) {
-    adminService.login(parmas).then(res => {
+  /**
+   * 登录
+   * @param {*} param0 
+   * @param {*} parmas 
+   */
+  async login({
+    dispatch,
+    commit,
+    state
+  }, parmas) {
+    await adminService.login(parmas).then(res => {
       const data = res.data;
       switch (data.code) {
         case 0:
           commit('setToken', data.data.token);
           commit('setUser', data.data.user);
+          commit('setLogin', true);
           locStore('token', data.data.token);
           locStore('user', JSON.stringify(data.data.user));
+          console.log(2);
           break;
         default:
           break;
@@ -18,5 +29,19 @@ export default {
     }).catch(err => {
       console.log(err);
     })
+  },
+
+  /**
+   * 退出登录
+   * @param {*} param0 
+   */
+  logout({
+    dispatch,
+    commit,
+    state
+  }) {
+    commit('emptyUser');
+    commit('emptyToken');
+    commit('setLogin', false);
   }
 }

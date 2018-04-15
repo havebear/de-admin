@@ -1,6 +1,6 @@
 export default {
-  loading: state => state.loading,
-  login: state => state.login,
+  isLoading: state => state.isLoading,
+  isLogin: state => state.isLogin,
   token: state => state.token,
   user: state => state.userInfo,
 }
