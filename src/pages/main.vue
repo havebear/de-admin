@@ -39,7 +39,7 @@
               <i class="el-icon-search"></i>
               <span slot="title">讲师</span>
             </el-menu-item>
-            <el-menu-item index="/manager/catlog">
+            <el-menu-item index="/manager/catalog">
               <i class="el-icon-edit"></i>
               <span slot="title">分类</span>
             </el-menu-item>

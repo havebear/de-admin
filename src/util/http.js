@@ -45,6 +45,9 @@ http.interceptors.response.use(
         type: 'error'
       });
     }
+    if(response.data.code == 4100) {
+      
+    }
     return Promise.resolve(response);
   },
   function (error) {

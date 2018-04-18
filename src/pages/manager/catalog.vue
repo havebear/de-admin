@@ -1,8 +1,7 @@
-
 <template>
-  <div class="m-course">
+  <div class="m-catalog">
     <div class="data-table">
-      <el-table :data="courses" border style="width: 100%" v-loading="isLoading">
+      <el-table :data="catalogs" border style="width: 100%" v-loading="isLoading">
         <el-table-column type="index" width="50">
         </el-table-column>
         <el-table-column prop="name" label="名称">
@@ -22,28 +21,28 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
-import courseService from "@/api/course-service";
+import catalogService from "@/api/catalog-service";
 
 export default {
-  name: "MCourse",
+  name: "MCatalog",
   data() {
     return {
-      courses: []
+      catalogs: []
     };
   },
   created() {
     this.setLoading(true);
   },
   mounted() {
-    this.getCourses();
+    this.getCatalogs();
   },
   methods: {
     ...mapMutations({
       setLoading: "setLoading"
     }),
-    getCourses() {
-      courseService.getCourses().then(res => {
-        this.courses = res.data.data;
+    getCatalogs() {
+      catalogService.getCatalogs().then(res => {
+        this.catalogs = res.data.data;
         this.setLoading(false);
       });
     }
@@ -59,4 +58,3 @@ export default {
 <style scoped lang="scss">
 
 </style>
-

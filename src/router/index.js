@@ -7,7 +7,7 @@ import Login from '@/pages/login'
 import Main from '@/pages/main'
 import MMain from '@/pages/manager/main'
 import MTeacher from '@/pages/manager/teacher'
-import MCatlog from '@/pages/manager/catlog'
+import MCatalog from '@/pages/manager/catalog'
 import MCourse from '@/pages/manager/course'
 import MTest from '@/pages/manager/test'
 import MApply from '@/pages/manager/apply'
@@ -47,12 +47,12 @@ const routes = [{
         component: MTeacher
       },
       {
-        path: 'catlog',
-        name: 'MCatlog',
+        path: 'catalog',
+        name: 'MCatalog',
         meta: {
           requireAuth: true,
         },
-        component: MCatlog
+        component: MCatalog
       },
       {
         path: 'course',
