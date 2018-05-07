@@ -39,8 +39,15 @@ export default {
       await this.login(this.account);
       this.loading = false;
       if (this.isLogin) {
-        console.log("登录成功");
-        this.$router.push("/");
+        this.$message({
+          showClose: true,
+          message: "登录成功",
+          type: "success"
+        });
+        setTimeout(() => {
+          this.$router.push("/");
+          this.$message.close();
+        }, 1000);
       }
     },
     ...mapActions(["login"])

@@ -9,6 +9,7 @@ export default {
   },
   setUser(state, data) {
     state.user = data;
+    locStore('user', JSON.stringify(data));
   },
   emptyUser(state) {
     state.user = {};
@@ -16,6 +17,7 @@ export default {
   },
   setToken(state, data) {
     state.token = data;
+    locStore('token', data);
   },
   emptyToken(state) {
     state.token = "";

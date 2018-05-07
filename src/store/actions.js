@@ -19,11 +19,12 @@ export default {
           commit('setToken', data.data.token);
           commit('setUser', data.data.user);
           commit('setLogin', true);
-          locStore('token', data.data.token);
-          locStore('user', JSON.stringify(data.data.user));
           console.log(2);
           break;
         default:
+          commit('emptyUser');
+          commit('emptyToken');
+          commit('setLogin', false);
           break;
       }
     }).catch(err => {

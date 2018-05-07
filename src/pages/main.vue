@@ -30,8 +30,8 @@
       </el-header>
       <el-container>
         <el-aside width="200px">
-          <el-menu default-active="/manager/teacher" class="el-menu-vertical-demo" @select="toUrl">
-            <el-menu-item index="/">
+          <el-menu :default-active="active" class="el-menu-vertical-demo" @select="toUrl">
+            <el-menu-item index="/manager">
               <i class="el-icon-menu"></i>
               <span slot="title">主页</span>
             </el-menu-item>
@@ -76,7 +76,15 @@
 <script>
 export default {
   name: "Main",
-  mounted() {},
+  data() {
+    return {
+      active: "/manager"
+    };
+  },
+  mounted() {
+    console.log(this.$route.fullPath);
+    this.active = this.$route.fullPath;
+  },
   methods: {
     toUrl(index) {
       this.$router.push(index);

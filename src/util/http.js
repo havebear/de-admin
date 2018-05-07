@@ -45,8 +45,10 @@ http.interceptors.response.use(
         type: 'error'
       });
     }
-    if(response.data.code == 4100) {
-      
+    if (response.data.code == 4100) {
+      setTimeout(() => {
+        window.location = "http://localhost:8080/#/login"
+      }, 1000)
     }
     return Promise.resolve(response);
   },

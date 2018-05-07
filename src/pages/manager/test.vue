@@ -4,7 +4,9 @@
       <el-table :data="tests" border style="width: 100%" v-loading="isLoading">
         <el-table-column type="index" width="50">
         </el-table-column>
-        <el-table-column prop="name" label="名称">
+        <el-table-column prop="title" label="名称">
+        </el-table-column>
+        <el-table-column prop="type_id" label="分类">
         </el-table-column>
         <el-table-column prop="create_time" label="创建时间">
         </el-table-column>
